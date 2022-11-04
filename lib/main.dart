@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mak_it/screens/error_screen.dart';
 import 'package:mak_it/screens/login_screen.dart';
 
 void main() => runApp(MyApp());
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: MaterialColor(0xff828282, primaryColorMap),
       ),
-      home: LogInScreen(),
+      home: const LogInScreen(),
     );
   }
 }

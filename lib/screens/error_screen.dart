@@ -9,28 +9,50 @@ class ErrorScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.warning_amber),
-            Text('Не удалось загрузить информацию'),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return UsersScreen();
-                }));
-              },
-              style: OutlinedButton.styleFrom(
-                backgroundColor: const Color(0xff9B51E0),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
+            Container(
+              height: 76,
+              width: 66.28,
+              child: Icon(
+                Icons.warning_amber,
+                color: const Color(0xff9B51E0),
+                size: 75,
               ),
-              child: const SizedBox(
-                width: double.infinity,
-                child: Center(
-                  child: Text(
-                    'Войти',
-                    style: TextStyle(
+            ),
+            SizedBox(
+              height: 36,
+            ),
+            Text(
+              'Не удалось загрузить информацию',
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            SizedBox(
+              height: 36,
+            ),
+            Container(
+              width: 230,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return UsersScreen();
+                  }));
+                },
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: const Color(0xff9B51E0),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                ),
+                child: const SizedBox(
+                  width: double.infinity,
+                  child: Center(
+                    child: Text(
+                      'Обновить',
+                      style: TextStyle(
                         fontSize: 16,
                         color: Colors.white,
-                        fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -41,21 +63,3 @@ class ErrorScreen extends StatelessWidget {
     );
   }
 }
-/* const spinkit = SpinKitRotatingCircle(
-  color: Colors.white,
-  size: 50.0,
-);
-final spinkit = SpinKitFadingCircle(
-  itemBuilder: (BuildContext context, int index) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: index.isEven ? Colors.red : Colors.green,
-      ),
-    );
-  },
-);
-final spinkit = SpinKitSquareCircle(
-  color: Colors.white,
-  size: 50.0,
-  controller: AnimationController(vsync: this, duration: const Duration(milliseconds: 1200)),
-); */

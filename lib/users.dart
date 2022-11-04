@@ -11,23 +11,26 @@ class Users extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.all(8),
       itemCount: jsonResponse.length,
+      shrinkWrap: true,
       itemBuilder: (BuildContext context, int index) {
-        return Container(
+        return SizedBox(
           height: 80,
           child: Row(
             children: [
               Row(
                 children: [
-                  Container(
-                      height: 80,
-                      width: 92,
-                      child: const Icon(
-                        Icons.person_outline,
-                        color: Color(0xffBBBBBD),
-                        size: 50,
-                      )),
+                  const SizedBox(
+                    height: 80,
+                    width: 92,
+                    child: Icon(
+                      Icons.person_outline,
+                      color: Color(0xffBBBBBD),
+                      size: 50,
+                    ),
+                  ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
