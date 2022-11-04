@@ -60,52 +60,50 @@ class _UsersScreen extends State<UsersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: FutureBuilder(
-          future: getUserData(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: Colors.purple,
-                ),
-              );
-            }
-            if (snapshot.hasData) {
-              return CustomScrollView(
-                slivers: [
-                  const SliverAppBar(
-                    pinned: true,
-                    // forceElevated: true,
-                    elevation: 10,
-                    // floating: true,
-                    // snap: true,
-                    expandedHeight: 120.0,
-                    flexibleSpace: FlexibleSpaceBar(
-                      title: Text(
-                        'Пользователи',
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
-                      // background: FlutterLogo(),
-                    ),
-                    centerTitle: true,
-                    backgroundColor: Colors.white,
-                  ),
-                  // SliverFillRemaining(
-                  SliverToBoxAdapter(
-                    // hasScrollBody: true,
-                    child: Users(jsonResponse: jsonResponse),
-                  ),
-                ],
-              );
-            }
+      body: FutureBuilder(
+        future: getUserData(),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
             return const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: Colors.purple,
+              ),
             );
-          },
-        ),
+          }
+          if (snapshot.hasData) {
+            return CustomScrollView(
+              slivers: [
+                const SliverAppBar(
+                  pinned: true,
+                  // forceElevated: true,
+                  elevation: 10,
+                  // floating: true,
+                  // snap: true,
+                  expandedHeight: 120.0,
+                  flexibleSpace: FlexibleSpaceBar(
+                    centerTitle: true,
+                    title: Text(
+                      'Пользователи',
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                    // background: FlutterLogo(),
+                  ),
+                  backgroundColor: Colors.white,
+                ),
+                // SliverFillRemaining(
+                SliverToBoxAdapter(
+                  // hasScrollBody: true,
+                  child: Users(jsonResponse: jsonResponse),
+                ),
+              ],
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
   }
